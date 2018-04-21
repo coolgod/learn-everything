@@ -1,0 +1,6 @@
+*.out
+*.cmi
+*.cmx
+*.o
+
+hello_world
