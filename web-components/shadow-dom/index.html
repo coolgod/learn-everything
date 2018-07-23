@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <style>
+          img {
+              width: 200px;
+              height: 200px;
+          }
+      </style>
+      <popup-info img="dinosaur.png" text="test text" />
+      <!-- custom element has to be before the script -->
+      <!-- or use custom element callbacks -->
+      <script src="popup-info.js"></script>
+  </body>
+</html>
