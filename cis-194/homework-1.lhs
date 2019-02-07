@@ -49,25 +49,30 @@ Exercise 6 -  attemp 1: 5466 for 15 stacks
 > {-
 > hanoiFour :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
 > hanoiFour 1 a b c d = [(a, b)]
-> hanoiFour 2 a b c d = [(a, d), (a, b), (d, c), (c, b)]
+> hanoiFour 2 a b c d = [(a, c), (a, b), (c, b)] -- rely on only 3 pegs
 > hanoiFour n a b c d =
 >   (hanoiFour (n-2) a d c b) ++
->   (hanoi 2 a b c) ++
+>   (hanoiFour 2 a b c d) ++
 >   (hanoiFour (n-2) d a b c) ++
 >   (hanoiFour (n-2) a b c d)
 > -}
 
-Exercise 6 attempt 2: 847 for 15 stacks
+Exercise 6 -  attemp 2: 354 for 15 stacks
 
-> hanoiFour :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+> half :: Int -> Float
+> half n
+>   | n <= 0 = 0
+>   | n > 0 = fromIntegral(n - 1) / 2
+> hanoiFour :: Int -> Peg -> Peg -> Peg -> Peg -> [Move]
 > hanoiFour 1 a b c d = [(a, b)]
-> hanoiFour 2 a b c d = [(a, d), (a, b), (d, c), (c, b)]
-> hanoiFour 3 a b c d = [(a, d), (a, b), (b, c), (a, b), (c, b), (d, c), (c, b)]
+> hanoiFour 2 a b c d = [(a, c), (a, b), (c, b)] -- rely on only 3 pegs
 > hanoiFour n a b c d =
->   (hanoiFour (n-3) a d c b) ++
->   (hanoiFour 3 a b c d) ++
->   (hanoiFour (n-3) d a c b) ++
->   (hanoiFour (n-3) a b c d)
+>   (hanoiFour (ceiling(half(n))) a d c b) ++
+>   (hanoi (floor(half(n))) a c b) ++
+>   [(a, b)] ++
+>   (hanoi (floor(half(n))) c b a) ++
+>   (hanoiFour (ceiling(half(n))) d c b a) ++
+>   (hanoiFour (ceiling(half(n))) c b d a)
 
 > main = do
 >   print(toDigits(-1))
@@ -91,3 +96,4 @@ Exercise 6 attempt 2: 847 for 15 stacks
 >   print(length (hanoiFour 8 "a" "b" "c" "d"))
 >   print(length (hanoi 15 "a" "b" "c"))
 >   print(length (hanoiFour 15 "a" "b" "c" "d"))
+>   print(hanoiFour 15 "a" "b" "c" "d")
