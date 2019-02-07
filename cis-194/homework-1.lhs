@@ -25,16 +25,24 @@ Exercise 2
 Exercise 3
 
 > sumDigits :: [Int] -> Int
-> sumDigits (x:[]) = sum (toDigits x)
+> sumDigits (x:[])     = sum (toDigits x)
 > sumDigits (x:(y:[])) = sumDigits [x] + sumDigits [y]
-> sumDigits (x:y:zs) = sumDigits [x, y] + sumDigits zs
+> sumDigits (x:y:zs)   = sumDigits [x, y] + sumDigits zs
 
 Exercise 4
 
 > validate :: Int -> Bool
 > validate x
 >   | mod (sumDigits (doubleEveryOther (toDigits x))) 10 == 0  = True
->   | otherwise                                     = False
+>   | otherwise                                                = False
+
+Exercise 5
+
+> type Peg = String
+> type Move = (Peg, Peg)
+> haoni :: Integer -> Peg -> Peg -> Peg -> [Move]
+> haoni 1 a b c = [(a, b)]
+> haoni n a b c = (haoni (n - 1) a c b) ++ [(a, b)] ++ (haoni (n - 1) c b a)
 
 > main = do
 >   print(toDigits(-1))
@@ -48,3 +56,6 @@ Exercise 4
 >   print(sumDigits([16, 7, 12, 5]))
 >   print(validate(4012888888881881))
 >   print(validate(4012888888881882))
+>   print(haoni 1 "a" "b" "c")
+>   print(haoni 2 "a" "b" "c")
+>   print(haoni 3 "a" "b" "c")
