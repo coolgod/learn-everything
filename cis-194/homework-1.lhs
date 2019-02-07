@@ -44,8 +44,9 @@ Exercise 5
 > hanoi 1 a b c = [(a, b)]
 > hanoi n a b c = (hanoi (n - 1) a c b) ++ [(a, b)] ++ (hanoi (n - 1) c b a)
 
-Exercise 6 -  attemp 1: 5k for 15 stacks
+Exercise 6 -  attemp 1: 5466 for 15 stacks
 
+> {-
 > hanoiFour :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
 > hanoiFour 1 a b c d = [(a, b)]
 > hanoiFour 2 a b c d = [(a, d), (a, b), (d, c), (c, b)]
@@ -54,6 +55,19 @@ Exercise 6 -  attemp 1: 5k for 15 stacks
 >   (hanoi 2 a b c) ++
 >   (hanoiFour (n-2) d a b c) ++
 >   (hanoiFour (n-2) a b c d)
+> -}
+
+Exercise 6 attempt 2: 847 for 15 stacks
+
+> hanoiFour :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+> hanoiFour 1 a b c d = [(a, b)]
+> hanoiFour 2 a b c d = [(a, d), (a, b), (d, c), (c, b)]
+> hanoiFour 3 a b c d = [(a, d), (a, b), (b, c), (a, b), (c, b), (d, c), (c, b)]
+> hanoiFour n a b c d =
+>   (hanoiFour (n-3) a d c b) ++
+>   (hanoiFour 3 a b c d) ++
+>   (hanoiFour (n-3) d a c b) ++
+>   (hanoiFour (n-3) a b c d)
 
 > main = do
 >   print(toDigits(-1))
