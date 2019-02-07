@@ -57,7 +57,7 @@ Exercise 6 -  attemp 1: 5466 for 15 stacks
 >   (hanoiFour (n-2) a b c d)
 > -}
 
-Exercise 6 -  attemp 2: 354 for 15 stacks
+Exercise 6 -  attemp 2: 345 for 15 stacks
 
 > half :: Int -> Float
 > half n
@@ -66,6 +66,7 @@ Exercise 6 -  attemp 2: 354 for 15 stacks
 > hanoiFour :: Int -> Peg -> Peg -> Peg -> Peg -> [Move]
 > hanoiFour 1 a b c d = [(a, b)]
 > hanoiFour 2 a b c d = [(a, c), (a, b), (c, b)] -- rely on only 3 pegs
+> hanoiFour 3 a b c d = [(a, c), (a, d), (a, b), (d, b), (c, b)]
 > hanoiFour n a b c d =
 >   (hanoiFour (ceiling(half(n))) a d c b) ++
 >   (hanoi (floor(half(n))) a c b) ++
