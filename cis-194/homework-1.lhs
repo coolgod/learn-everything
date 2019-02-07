@@ -22,6 +22,20 @@ Exercise 2
 > doubleEveryOther :: [Int] -> [Int]
 > doubleEveryOther xs = reverse ( doubleFromLeft (reverse xs) )
 
+Exercise 3
+
+> sumDigits :: [Int] -> Int
+> sumDigits (x:[]) = sum (toDigits x)
+> sumDigits (x:(y:[])) = sumDigits [x] + sumDigits [y]
+> sumDigits (x:y:zs) = sumDigits [x, y] + sumDigits zs
+
+Exercise 4
+
+> validate :: Int -> Bool
+> validate x
+>   | mod (sumDigits (doubleEveryOther (toDigits x))) 10 == 0  = True
+>   | otherwise                                     = False
+
 > main = do
 >   print(toDigits(-1))
 >   print(toDigits(0))
@@ -31,4 +45,6 @@ Exercise 2
 >   print(digitsRev(123))
 >   print(doubleEveryOther([1,2,3]))
 >   print(doubleEveryOther([8,7,6,5]))
->   
+>   print(sumDigits([16, 7, 12, 5]))
+>   print(validate(4012888888881881))
+>   print(validate(4012888888881882))
