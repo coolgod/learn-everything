@@ -40,9 +40,20 @@ Exercise 5
 
 > type Peg = String
 > type Move = (Peg, Peg)
-> haoni :: Integer -> Peg -> Peg -> Peg -> [Move]
-> haoni 1 a b c = [(a, b)]
-> haoni n a b c = (haoni (n - 1) a c b) ++ [(a, b)] ++ (haoni (n - 1) c b a)
+> hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+> hanoi 1 a b c = [(a, b)]
+> hanoi n a b c = (hanoi (n - 1) a c b) ++ [(a, b)] ++ (hanoi (n - 1) c b a)
+
+Exercise 6 -  attemp 1: 5k for 15 stacks
+
+> hanoiFour :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+> hanoiFour 1 a b c d = [(a, b)]
+> hanoiFour 2 a b c d = [(a, d), (a, b), (d, c), (c, b)]
+> hanoiFour n a b c d =
+>   (hanoiFour (n-2) a d c b) ++
+>   (hanoi 2 a b c) ++
+>   (hanoiFour (n-2) d a b c) ++
+>   (hanoiFour (n-2) a b c d)
 
 > main = do
 >   print(toDigits(-1))
@@ -56,6 +67,13 @@ Exercise 5
 >   print(sumDigits([16, 7, 12, 5]))
 >   print(validate(4012888888881881))
 >   print(validate(4012888888881882))
->   print(haoni 1 "a" "b" "c")
->   print(haoni 2 "a" "b" "c")
->   print(haoni 3 "a" "b" "c")
+>   print(hanoi 1 "a" "b" "c")
+>   print(hanoi 2 "a" "b" "c")
+>   print(hanoi 3 "a" "b" "c")
+>   print("------------------")
+>   print(length (hanoi 4 "a" "b" "c"))
+>   print(length (hanoiFour 4 "a" "b" "c" "d"))
+>   print(length (hanoi 8 "a" "b" "c"))
+>   print(length (hanoiFour 8 "a" "b" "c" "d"))
+>   print(length (hanoi 15 "a" "b" "c"))
+>   print(length (hanoiFour 15 "a" "b" "c" "d"))
