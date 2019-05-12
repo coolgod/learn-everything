@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <select size=1 id="selectOne">
+            <option>one</option>
+            <option selected>two</option>
+            <option>three</option>
+        </select>
+        <br />
+        <fieldset name="feildSetOne"> <!-- fieldset has undefined type-->
+            <legend>fieldset test</legend>
+            <select size=2>
+                <option>one</option>
+                <option>two</option>
+                <option>three</option>
+            </select>
+            <br />
+            <select multiple size=8>
+                <option>one</option>
+                <option>two</option>
+                <option>three</option>
+                <option>four</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+            </select>
+        </fieldset>
+    </form>
+    <script>
+        const selectBox1 = document.getElementById('selectOne');
+        selectBox1.options[selectBox1.selectedIndex].selected = false; // this will make the it select "one"
+    </script>
+</body>
+</html>
