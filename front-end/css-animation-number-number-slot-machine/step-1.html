@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./step-1.css" />
+    <title>Step 1</title>
+</head>
+<body>
+    <div id="slot-container">
+        <div id="number">1</div>
+    </div>
+    <button id="start-btn">start</button>
+    <script>
+        const startBtn = document.getElementById('start-btn');
+        startBtn.addEventListener(
+            'click',
+            () => {
+                const numberEle = document.getElementById('number');
+                numberEle.className += 'in';
+            },
+            { once: true });
+    </script>
+</body>
+</html>
