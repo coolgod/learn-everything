@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('inline js 1 evaluated');
+    </script>
+    <script src='./test-1.js'></script>
+    <script src='./test-2.js' async></script>
+    <!--
+        the "inline js 2" parsing is not blocked by downloading test-2.js
+    -->
+    <script>
+        console.log('inline js 2 evaluated');
+        window.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOMContentLoaded');
+        });
+    </script>
+    <!--
+        the test-3 parsing and evaluate is blocked by test-2.js parsing and evaluating
+    -->
+    <script src='./test-3.js'></script>
+</body>
+</html>
