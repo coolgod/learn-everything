@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>intersection observer test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        /* tall enough to cover the first screen */
+        #test-block-1 {
+            background-color: red;
+            height: 100vh;
+        }
+
+        /* below first screen */
+        #test-block-2 {
+            background-color: yellow;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="test-block-1"></div>
+    <div id="test-block-2"></div>
+    <script>
+        const options = {
+            root: null, // using viewport
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    alert('scrolled half of test-block-2 into screen');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(document.getElementById('test-block-2'));
+    </script>
+</body>
+</html>
