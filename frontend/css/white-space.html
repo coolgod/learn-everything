@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whitespace</title>
+</head>
+
+<body>
+    <p style="font-style: italic;">
+        In computer programming, whitespace is any character or series of characters that
+        represent horizontal or vertical space in typography
+    </p>
+    <p>normal</p>
+    <p class="container one">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <p>nowrap: suppress line break from new line character</p>
+    <p class="container two">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <p>pre: all whitespaces are preserved</p>
+    <p class="container three">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <p>similar to &lt;pre&nbsp;&sol;&gt;</p>
+    <pre class="container">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;   
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </pre>
+    <p>pre-wrap: similar to pre, but wrap when overflow</p>
+    <p class="container four">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <p>pre-line: break at new line characters, collapse whitespaces, wrap when overflow.</p>
+    <p class="container five">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <p>break-spaces: identical to pre-wrap</p>
+    <p class="container six">
+        This is line one, and this is also line one, it's just a very long line one with 3 ending spaces.&nbsp;&nbsp;&nbsp;
+        This is line two, and this is also line two, it is followed line one with new line character.
+        This is line three. <br /> This is line four following line three with a &lt;br&nbsp;&sol;&gt; tag.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>New lines</th>
+                <th>Spaces and tabs</th>
+                <th>Text wrapping</th>
+                <th>End-of-line spaces</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><code>normal</code></th>
+                <td>Collapse</td>
+                <td>Collapse</td>
+                <td>Wrap</td>
+                <td>Remove</td>
+            </tr>
+            <tr>
+                <th><code>nowrap</code></th>
+                <td>Collapse</td>
+                <td>Collapse</td>
+                <td>No wrap</td>
+                <td>Remove</td>
+            </tr>
+            <tr>
+                <th><code>pre</code></th>
+                <td>Preserve</td>
+                <td>Preserve</td>
+                <td>No wrap</td>
+                <td>Preserve</td>
+            </tr>
+            <tr>
+                <th><code>pre-wrap</code></th>
+                <td>Preserve</td>
+                <td>Preserve</td>
+                <td>Wrap</td>
+                <td>Hang</td>
+            </tr>
+            <tr>
+                <th><code>pre-line</code></th>
+                <td>Preserve</td>
+                <td>Collapse</td>
+                <td>Wrap</td>
+                <td>Remove</td>
+            </tr>
+            <tr>
+                <th><code>break-spaces</code></th>
+                <td>Preserve</td>
+                <td>Preserve</td>
+                <td>Wrap</td>
+                <td>Wrap</td>
+            </tr>
+        </tbody>
+    </table>
+    <style>
+        .container {
+            width: 400px;
+            background-color: lightgray;
+        }
+
+        .one {
+            white-space: normal;
+        }
+
+        .two {
+            white-space: nowrap;
+        }
+
+        .three {
+            white-space: pre;
+        }
+
+        .four {
+            white-space: pre-wrap;
+        }
+
+        .five {
+            white-space: pre-line;
+        }
+
+        .six {
+            white-space: break-spaces;
+        }
+    </style>
+</body>
+
+</html>
