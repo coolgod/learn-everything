@@ -6,20 +6,33 @@ function debounce(
      }) {
         const { leading } = options;
         // internal timer
-        let timer = null;
-        return function() {
-            if (!timer) {
-                if (leading) {
-                    fn();
-                    timer = setTimeoutout(() => {
-                        timer = null;
-                    }, ms);
-                } else {
-                    timer = setTimeout(() => {
-                        fn();
-                        timer = null;
-                    }, ms);
+        let timeout = null;
+        return function(...args) {
+            const context = this;
+
+            // always cancel previous schedule
+            // upon receiving consecutive calls
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+
+            // if not leading schedule execution at a later time
+            if (!leading) {
+                timeout = setTimeout(() => fn.apply(context, args), ms);
+            }
+            
+            // if leading
+            if (leading) {
+                // if timeout is null, execute immediately
+                if (!timeout) {
+                    fn.apply(context, args);
                 }
+
+                // create/update the timeout
+                // and schedule to reset it to null a t alter time
+                timeout = setTimeout(() => {
+                    timeout = null;
+                }, ms);
             }
         };
 }
