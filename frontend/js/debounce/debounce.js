@@ -29,7 +29,7 @@ function debounce(
                 }
 
                 // create/update the timeout
-                // and schedule to reset it to null a t alter time
+                // and schedule to reset it to null at a later time
                 timeout = setTimeout(() => {
                     timeout = null;
                 }, ms);
