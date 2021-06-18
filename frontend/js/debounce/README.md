@@ -1,3 +1,4 @@
-试着用自己垃圾的js水平实现一个debounce，完全没看任何现有实现。
+Debounce implementation.
 
-`node index.js`
+Run tests:
+`node debounce.test.js`

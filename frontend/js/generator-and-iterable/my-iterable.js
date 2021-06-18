@@ -22,7 +22,7 @@ MyIterable.prototype[Symbol.toStringTag] = 'MyIterable';
 MyIterable.prototype[Symbol.iterator] = function* () {
     let index = 0;
     while (index < this.internalArr.length) {
-        yield `ele[${index + 1}]: ` + this.internalArr[index];
+        yield this.internalArr[index];
         index += 1;
     }
 }
@@ -31,10 +31,8 @@ MyIterable.prototype[Symbol.toPrimitive] = function() {
     return this.internalArr.join(' | ');
 }
 
-//  use MyIterable
-
-console.log(typeof MyIterable); // function
-console.log(MyIterable instanceof Function); // true
+// test
+console.log(typeof MyIterable === 'function');
 
 const myIterable = new MyIterable(1, 2, 3);
 console.log(myIterable.toString()); // [object MyIterable]
