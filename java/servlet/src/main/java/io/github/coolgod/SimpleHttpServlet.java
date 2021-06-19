@@ -1,4 +1,4 @@
-package com.coolgod;
+package io.github.coolgod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

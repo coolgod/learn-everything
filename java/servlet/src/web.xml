@@ -6,12 +6,12 @@
 
     <servlet>
         <servlet-name>helloHttpServlet</servlet-name>
-        <servlet-class>com.coolgod.SimpleHttpServlet</servlet-class>
+        <servlet-class>SimpleHttpServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>helloNameServlet</servlet-name>
-        <servlet-class>com.coolgod.SimpleServlet</servlet-class>
+        <servlet-class>SimpleServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

@@ -1,4 +1,4 @@
-package com.coolgod;
+package io.github.coolgod;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletRequest;
