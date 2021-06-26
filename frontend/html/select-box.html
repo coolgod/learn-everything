@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 </head>
 <body>
     <form>
-        <select size=1 id="selectOne">
+        <select size=1 id="select-one">
             <option>one</option>
             <option selected>two</option>
             <option>three</option>
         </select>
         <br />
-        <fieldset name="feildSetOne"> <!-- fieldset has undefined type-->
+        <fieldset name="field-set"> <!-- fieldset has undefined type-->
             <legend>fieldset test</legend>
             <select size=2>
                 <option>one</option>
@@ -36,8 +35,10 @@
         </fieldset>
     </form>
     <script>
-        const selectBox1 = document.getElementById('selectOne');
-        selectBox1.options[selectBox1.selectedIndex].selected = false; // this will make the it select "one"
+        const selectOne = document.getElementById('select-one');
+        console.log(selectOne.selectedIndex);
+        // this will make the first option as the default selected one
+        selectOne.options[selectOne.selectedIndex].selected = false;
     </script>
 </body>
 </html>
