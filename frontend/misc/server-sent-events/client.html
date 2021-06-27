@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Server-sent events</title>
+    </head>
+    <body>
+        <button id="stop-button">stop</button>
+        <p>messages received from the server:</p>
+        <script>
+            const evtSource = new EventSource("http://localhost:9000");
+
+            evtSource.addEventListener('message', function(event) {
+                const newElement = document.createElement("p");
+                newElement.textContent = "message: " + event.data;
+                document.body.appendChild(newElement);
+            });
+
+            evtSource.onerror = function(error) {
+                console.log('error', error);
+            }
+
+            document.getElementById('stop-button').addEventListener('click', () => {
+                evtSource.close();
+            });
+        </script>
+    </body>
+</html>
