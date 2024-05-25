@@ -1,40 +1,32 @@
-function debounce(
-    fn,
-    ms,
-    options={ 
-        leading: false,
-     }) {
-        const { leading } = options;
-        // internal timer
-        let timeout = null;
-        return function(...args) {
-            const context = this;
+function debounce(func, wait, option = {leading: false, trailing: true}) {
+  let timerId = null;
+  let lastArgs = null;
+  const { leading, trailing } = option;
 
-            // always cancel previous schedule
-            // upon receiving consecutive calls
-            if (timeout) {
-                clearTimeout(timeout);
-            }
+  function debounced() {
+    const [context, args] = [this, arguments];
 
-            // if not leading schedule execution at a later time
-            if (!leading) {
-                timeout = setTimeout(() => fn.apply(context, args), ms);
-            }
-            
-            // if leading
-            if (leading) {
-                // if timeout is null, execute immediately
-                if (!timeout) {
-                    fn.apply(context, args);
-                }
+    function delayed() {
+      // invoke at trailing edge only if there is `lastArgs` scheduled
+      if (lastArgs && trailing) {
+        func.apply(context, lastArgs);
+      }
+      lastArgs = null;
+      timerId = null;
+    }
 
-                // create/update the timeout
-                // and schedule to reset it to null at a later time
-                timeout = setTimeout(() => {
-                    timeout = null;
-                }, ms);
-            }
-        };
+    // invoke at leading edge
+    if (!timerId && leading) {
+      func.apply(context, args);
+    } else {
+      lastArgs = args;
+    }
+    // always reset timer
+    clearTimeout(timerId);
+    // schedule to run at trailing edge
+    timerId = setTimeout(delayed, wait);
+  }
+  return debounced;
 }
 
 module.exports = debounce;
